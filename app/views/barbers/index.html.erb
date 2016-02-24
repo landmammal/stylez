@@ -1,9 +1,7 @@
 <h1> Barber Shops</h1>
 <!-- barber shop name will go here -->
 
-<%= @barber.each do |p| %>
-    <!--  calls link_to method and the two arguments pass to it are the name that will become a link the route to that link, and the class to style it -->
-  <%= link_to p.name, post_path(p), class: "title" %> <br>
-<!--          p.title calls the column title store in this objects and renders it for each objects instance that's passing by  -->
+<% @barbers.each do |b| %>
+ <%= link_to b.name, barber_path(b), class: "barber_name"%>
 
 <% end %>
