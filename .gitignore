@@ -18,3 +18,4 @@
 
 # secret keys
 /config/local_env.yml
+/config/random.yml
