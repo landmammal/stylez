@@ -2,7 +2,7 @@
 
 
 
-<%= form_for(@barber) do |instance_post| %>
+<%= form_for(@barber, multipart: true) do |instance_post| %>
   <ul>
     <!--  calls the error method on article and passes it on the full message if nil it will spit out an error -->
   <% @barber.errors.full_messages.each do |error| %>
@@ -10,44 +10,51 @@
   <% end %>
   </ul>
 
+  <div class="form_field">
+    <p>   <!--  calls the label method on the instance of the post so is specifys the column-->
+      <%= instance_post.label :name %><br />
 
-  <p>   <!--  calls the label method on the instance of the post so is specifys the column-->
-    <%= instance_post.label :name %><br />
+      <!--  calls the text_field method on the instance of the post and assigns it to the column you refer to in in the model-->
+      <!--  field means is not a lot -->
+      <%= instance_post.text_field :name %>
+    </p>
+  </div>
 
-    <!--  calls the text_field method on the instance of the post and assigns it to the column you refer to in in the model-->
-    <!--  field means is not a lot -->
-    <%= instance_post.text_field :name %>
-  </p>
+  <div class="form_field">
+    <p><!--  calls the label method on the instance of the post so is specifys the column-->
+      <%= instance_post.label :phone %><br />
 
+      <!--  calls the text_area method on the instance of the post and assigns it to the column you refer to in db--><!--  -->
+      <!--  area means is expect a lot -->
+      <%= instance_post.text_area :phone %>
+    </p>
+  </div>
 
-  <p><!--  calls the label method on the instance of the post so is specifys the column-->
-    <%= instance_post.label :phone %><br />
+  <div class="form_field">
+    <p><!--  calls the label method on the instance of the post so is specifys the column-->
+      <%= instance_post.label :instagram %><br />
 
-    <!--  calls the text_area method on the instance of the post and assigns it to the column you refer to in db--><!--  -->
-    <!--  area means is expect a lot -->
-    <%= instance_post.text_area :phone %>
-  </p>
+      <!--  calls the text_area method on the instance of the post and assigns it to the column you refer to in db--><!--  -->
+      <!--  area means is expect a lot -->
+      <%= instance_post.text_area :instagram %>
+    </p>
+  </div>
 
-  <p><!--  calls the label method on the instance of the post so is specifys the column-->
-    <%= instance_post.label :instagram %><br />
+  <div class="form_field">
+    <p><!--  calls the label method on the instance of the post so is specifys the column-->
+      <%= instance_post.label :avatar %><br />
 
-    <!--  calls the text_area method on the instance of the post and assigns it to the column you refer to in db--><!--  -->
-    <!--  area means is expect a lot -->
-    <%= instance_post.text_area :instagram %>
-  </p>
+      <!--  calls the text_area method on the instance of the post and assigns it to the column you refer to in db--><!--  -->
+      <!--  area means is expect a lot -->
+      <%= instance_post.text_area :avatar %>
+    </p>
+  </div>
 
-  <p><!--  calls the label method on the instance of the post so is specifys the column-->
-    <%= instance_post.label :photo %><br />
-
-    <!--  calls the text_area method on the instance of the post and assigns it to the column you refer to in db--><!--  -->
-    <!--  area means is expect a lot -->
-    <%= instance_post.text_area :photo %>
-  </p>
-
-
-  <p>
-    <!--  calls the submit method on the instance of the post so it can be store in the db-->
-    <!-- so it saves this new column in the variable you refer to for this form -->
-    <%= instance_post.submit 'save this sir', class: "save_boton" %>
-  </p>         <!--  gives it a class to be style, and calls the create method in the controller .  -->
+  <div class="action_buttom">
+    <p>
+      <!--  calls the submit method on the instance of the post so it can be store in the db-->
+      <!-- so it saves this new column in the variable you refer to for this form -->
+      <%= instance_post.submit 'save this sir', class: "save_boton" %>
+    </p>         <!--  gives it a class to be style, and calls the create method in the controller .  -->
+  </div>
 <% end %>
