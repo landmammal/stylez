@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'barbers#index'
+  resource :barbers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
