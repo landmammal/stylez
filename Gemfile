@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2'
 gem 'rails_12factor', group: :production
 gem 'hirb'
 gem 'paper'
