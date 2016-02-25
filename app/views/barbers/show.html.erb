@@ -1,7 +1,9 @@
 <h1>Style</h1>
 
-<%= image_tag @barber.avatar.url(:square) %>
-<div class:"barber_name"> <%= @barber.name %> </div>
-<div class:"barber_instagram"> <%= @barber.instagram %> </div>
-<div class:"barber_phone"> <%= @barber.phone %>
-<div class:"barber_photo"> <%= @barber.photo %>
+  <%= image_tag @barber.avatar.url(:square) %>
+  <div class:"barber_name"> <%= @barber.name %> </div>
+  <div class:"barber_instagram"> <%= @barber.instagram %> </div>
+  <div class:"barber_phone"> <%= @barber.phone %> </div>
+  <div class:"barber_photo"> <%= @barber.photo %> </div>
+
+  <%= link_to "Edit Profile", edit_barber_path(@barber), class: "editprofile"%>

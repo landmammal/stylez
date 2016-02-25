@@ -25,4 +25,18 @@ class BarbersController < ApplicationController
 
    end
 
+   def edit
+     @barber = Barber.find(params[:id])
+   end
+
+   def update
+     def update
+      @barber = Barber.find(params[:id])
+      @barber.update(post_params)
+
+      redirect_to barber_path(@post)
+    end
+
+   end
+
 end
