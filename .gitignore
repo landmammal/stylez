@@ -15,6 +15,4 @@
 /log/*
 !/log/.keep
 /tmp
-
-# secret keys
-/config/local_env.yml
+.env

@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem 'dotenv-rails'
 gem 'paperclip'
 gem 'aws-sdk', '< 2'
 gem 'rails_12factor', group: :production

@@ -1,8 +1,6 @@
 class Barber < ActiveRecord::Base
   belongs_to :shop
-  # friend.avatar.url => http://your_bucket_name.s3.amazonaws.com/...
-
-
+  
   has_attached_file :avatar, styles: {
       thumb: '100x100>',
       square: '200x200#',

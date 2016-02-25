@@ -1,4 +1,12 @@
 
 <h1>Register</h1>
 
-<%= render partial: 'form' %>
+  <% if user_signed_in? %>
+    <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "logout" %>
+      <%= render partial: 'form' %>
+  <% else %>
+    <di>
+      <%= link_to "Log In", new_user_session_path %>
+      <%= link_to "Register", new_user_registration_path %>
+    </di>
+  <% end %>

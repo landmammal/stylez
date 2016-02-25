@@ -16,9 +16,7 @@ class BarbersController < ApplicationController
    end
 
    def create
-     @barber = Barber.new (forms_params)
-     @barber.save
-
+     @barber = Barber.new(form_params)
      if @barber.save
        redirect_to @barber, notice: 'You have succesfully register, WELCOME to STYLE'
      else

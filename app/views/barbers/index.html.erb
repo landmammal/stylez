@@ -1,7 +1,10 @@
-<h1> Barber Shops</h1>
+<h1> Barber Shops name here</h1>
+
+
 <!-- barber shop name will go here -->
 
-<% @barbers.each do |b| %>
- <%= link_to b.name, barber_path(b), class: "barber_name"%>
+  <% @barbers.each do |b| %>
+   <%= link_to b.name, barber_path(b), class: "barber_name"%> <br>
+  <% end %>
 
-<% end %>
+  <%= link_to "Are you a Barber?", new_barber_path, class: "barber_register" %>
