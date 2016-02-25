@@ -30,13 +30,16 @@ class BarbersController < ApplicationController
    end
 
    def update
-     def update
       @barber = Barber.find(params[:id])
-      @barber.update(post_params)
+      @barber.update(form_params)
 
-      redirect_to barber_path(@post)
-    end
-
+      redirect_to barber_path(@barber)
    end
 
+   def destroy
+       @barber = Barber.destroy(params[:id])
+
+
+       redirect_to barber_path
+    end
 end
