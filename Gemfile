@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'gmaps4rails'
 
 gem 'dotenv-rails'
 gem 'paperclip'
