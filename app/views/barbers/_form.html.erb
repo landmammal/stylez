@@ -1,45 +1,47 @@
+<%= form_for ([@shop, @barber]) do |instance_post| %>
+  <% if @barber.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@barber.errors.count, "error") %> prohibited this barber from being saved:</h2>
 
-
-
-
-<%= form_for(@barber, multipart: true) do |instance_post| %>
-  <ul>
-  <% @barber.errors.full_messages.each do |error| %>
-    <li><%= error %></li>
+      <ul>
+      <% @barber.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  </ul>
 
   <div class="form_field">
-    <p>
-      <%= instance_post.label :name %><br />
-      <%= instance_post.text_field :name %>
-    </p>
-  </div>
+      <p>
+        <%= instance_post.label :name %><br />
+        <%= instance_post.text_field :name %>
+      </p>
+    </div>
 
-  <div class="form_field">
-    <p>
-      <%= instance_post.label :phone %><br />
-      <%= instance_post.text_area :phone %>
-    </p>
-  </div>
+    <div class="form_field">
+      <p>
+        <%= instance_post.label :phone %><br />
+        <%= instance_post.text_area :phone %>
+      </p>
+    </div>
 
-  <div class="form_field">
-    <p>
-      <%= instance_post.label :instagram %><br />
-      <%= instance_post.text_area :instagram %>
-    </p>
-  </div>
+    <div class="form_field">
+      <p>
+        <%= instance_post.label :instagram %><br />
+        <%= instance_post.text_area :instagram %>
+      </p>
+    </div>
 
-  <div class="form_field">
-    <p>
-      <%= instance_post.label :avatar %><br />
-      <%= instance_post.file_field :avatar %>
-    </p>
-  </div>
+    <div class="form_field">
+      <p>
+        <%= instance_post.label :avatar %><br />
+        <%= instance_post.file_field :avatar %>
+      </p>
+    </div>
 
-  <div class="action_buttom">
-    <p>
-      <%= instance_post.submit 'save this sir', class: "save_boton" %>
-    </p>
-  </div>
+    <div class="action_buttom">
+      <p>
+        <%= instance_post.submit 'save this sir', class: "save_boton" %>
+      </p>
+    </div>
 <% end %>

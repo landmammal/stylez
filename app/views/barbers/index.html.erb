@@ -1,10 +1,25 @@
-<h1> Barber Shops name here</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Barbers</h1>
+
+<h1>Style</h1>
+
+<% @barbers.each do |barber| %>
+      <tr>
+        <td><%= barber.name %></td>
+        <td><%= barber.avatar %></td>
+        <td><%= barber.instagram %></td>
+        <td><%= barber.phone %></td>
+        <td><%= barber.photo %></td>
+        <td><%= barber.shop %></td>
+        <td><%= link_to 'Show', [barber.shop, barber] %></td>
+        <td><%= link_to 'Edit', root_path %></td>
+        <td><%= link_to 'Destroy', [barber.shop, barber], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
 
 
-<!-- barber shop name will go here -->
+      <div class:"barber_name"> <%= @barbers.name %> </div>
+<!-- whats going on here -->
 
-  <% @barbers.each do |b| %>
-   <%= link_to b.name, barber_path(b), class: "barber_name"%> <br>
-  <% end %>
-
-  <%= link_to "Are you a Barber?", new_barber_path, class: "barber_register" %>
+<%= link_to 'New Barber', new_shop_barber_path %>

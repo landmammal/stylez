@@ -1,3 +1,6 @@
-<h1>Edit Portfolio</h1>
+<h1>Editing Barber</h1>
 
-<%= render partial: 'form' %>
+<%= render 'form' %>
+
+<%= link_to 'Show', [@barber.shop, @barber] %> |
+<%= link_to 'Back', shop_barbers_path(@barber.shop) %>

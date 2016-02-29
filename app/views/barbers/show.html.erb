@@ -1,10 +1,24 @@
-<h1>Style</h1>
+<p id="notice"><%= notice %></p>
+<%= image_tag @barber.avatar.url(:square) %>
+<p>
+  <strong>Name:</strong>
+  <%= @barber.name %>
+</p>
 
-  <%= image_tag @barber.avatar.url(:square) %>
-  <div class:"barber_name"> <%= @barber.name %> </div>
-  <div class:"barber_instagram"> <%= @barber.instagram %> </div>
-  <div class:"barber_phone"> <%= @barber.phone %> </div>
-  <div class:"barber_photo"> <%= @barber.photo %> </div>
+<p>
+  <strong>Avatar:</strong>
+  <%= @barber.avatar %>
+</p>
 
-  <%= link_to "Edit Profile", edit_barber_path(@barber), class: "editprofile"%> |
-  
+<p>
+  <strong>Instagram:</strong>
+  <%= @barber.instagram %>
+</p>
+
+<p>
+  <strong>Shop:</strong>
+  <%= @barber.shop %>
+</p>
+
+<%= link_to 'Edit', edit_shop_barber_path(@barber.shop, @barber) %> |
+<%= link_to 'Back', shop_barbers_path(@barber.shop) %>
