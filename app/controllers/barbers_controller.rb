@@ -8,12 +8,7 @@ class BarbersController < ApplicationController
     shop = Shop.find(params[:shop_id])
     # get all the barbers of this shop
     @barbers = shop.barbers
-    barber = @barbers.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @barbers }
-    end
+    
   end
 
   # GET /shop/:shop_id/barbers/:id
