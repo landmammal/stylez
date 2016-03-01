@@ -8,6 +8,12 @@
 </head>
 <body>
 
+  <% if current_user %>
+  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>
+
 <%= yield %>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx_QuTTTgggaYz61nA2JVp3m2cpxIYPxU&libraries=places&callback=initAutocomplete"
          async defer></script>
