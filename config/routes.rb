@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :shops do
     resources :barbers
   end
+
   resources :customers do
     member do
       get :following, :followers
@@ -16,6 +17,17 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+
+
+#this is used to direct login Sessions
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create'
+get '/logout' => 'sessions#destroy'
+
+#this is used for login purposes
+  get '/signup' => 'customers#new'
+    post '/customers' => 'customers#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
