@@ -5,19 +5,22 @@ class ShopsController < ApplicationController
   # GET /shops.json
   def index
     @shops = Shop.all
+    @map_hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+      marker.lat shop.latitude
+      marker.lng shop.longitude
+      marker.infowindow shop.blob
+    end
   end
 
-  # GET /shops/1
-  # GET /shops/1.json
+
   def show
   end
 
-  # GET /shops/new
+
   def new
     @shop = Shop.new
   end
 
-  # GET /shops/1/edit
   def edit
   end
 
@@ -37,8 +40,7 @@ class ShopsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /shops/1
-  # PATCH/PUT /shops/1.json
+
   def update
     respond_to do |format|
       if @shop.update(shop_params)
@@ -51,8 +53,7 @@ class ShopsController < ApplicationController
     end
   end
 
-  # DELETE /shops/1
-  # DELETE /shops/1.json
+
   def destroy
     @shop.destroy
     respond_to do |format|

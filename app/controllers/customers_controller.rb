@@ -21,8 +21,7 @@ class CustomersController < ApplicationController
   def edit
   end
 
-  # POST /customers
-  # POST /customers.json
+
   def create
     @customer = Customer.new(customer_params)
 
@@ -37,8 +36,7 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
+
   def update
     respond_to do |format|
       if @customer.update(customer_params)

@@ -20,5 +20,23 @@
   <%= @barber.shop %>
 </p>
 
+
+
+<% @barber ||= current_barber %>
+<div class="stats">
+  <a href="<%= following_barber_path(@barber) %>">
+    <strong id="following" class="stat">
+      <%= @barber.following.count %>
+    </strong>
+    following
+  </a>
+  <a href="<%= followers_barber_path(@barber) %>">
+    <strong id="followers" class="stat">
+      <%= @barber.followers.count %>
+    </strong>
+    followers
+  </a>
+</div>
+
 <%= link_to 'Edit', edit_shop_barber_path(@barber.shop, @barber) %> |
 <%= link_to 'Back', shop_barbers_path(@barber.shop) %>
