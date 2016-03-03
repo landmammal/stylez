@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :customers
-  # devise_for :users
+
   root 'shops#index'
 
   resources :shops do
@@ -17,17 +17,24 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :relationships, only: [:create, :destroy]
 
 
 #this is used to direct login Sessions
 get '/login' => 'sessions#new'
-post '/login' => 'sessions#create'
-get '/logout' => 'sessions#destroy'
+post '/login' => 'sessions#create_customer'
+get '/logout' => 'sessions#destroy_customer'
+#this is used to direct login Sessions
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create_barber'
+get '/logout' => 'sessions#destroy_barber'
 
 #this is used for login purposes
   get '/signup' => 'customers#new'
     post '/customers' => 'customers#create'
 
+    get '/signup' => 'barbers#new'
+    post '/barbers' => 'barbers#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

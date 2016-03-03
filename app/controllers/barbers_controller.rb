@@ -1,8 +1,28 @@
 class BarbersController < ApplicationController
   before_action :set_barber, only: [:show, :edit, :update, :destroy]
   before_action :set_shop, only: [:create, :new]
-  # GET /barbers
-  # GET /barbers.json
+  # before_filter :authorize_customer
+
+
+  def following
+    @title = "Following"
+    @barber  = Barber.find(params[:id])
+    @barbers = @barber.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @barber  = Barber.find(params[:id])
+    @barbers = @barber.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
+
+
+
+
   def index
     # you get that specific shop by params(params[:shop_id])
     shop = Shop.find(params[:shop_id])
@@ -14,7 +34,7 @@ class BarbersController < ApplicationController
   # GET /shop/:shop_id/barbers/:id
   # GET /barbers/:id.json
   def show
-    @instagram = Instagram.user_recent_media("2917432745", {:count => 20})
+    # @instagram = Instagram.user_recent_media("2917432745", {:count => 20})
     # you get that specific shop by params(params[:shop_id])
     shop = Shop.find(params[:shop_id])
     # get all the barbers of this shop
@@ -54,6 +74,7 @@ class BarbersController < ApplicationController
 
     respond_to do |format|
       if @barber.save
+        session[:barber_id] = @barber.id
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
         format.html { redirect_to root_path, :notice => 'profile created.' }
         #the key :location is associated to an array in order to build the correct route to the nested resource comment
@@ -113,6 +134,6 @@ class BarbersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def barber_params
-      params.require(:barber).permit(:name, :phone, :photo, :avatar, :instagram, :shop_id)
+      params.require(:barber).permit(:name, :phone, :photo, :avatar, :instagram, :shop_id, :email, :password, :password_confirmation)
     end
 end
