@@ -20,7 +20,11 @@
   <%= @barber.shop %>
 </p>
 
+<% @instagram.each do |instagram| %>
 
+<%= image_tag instagram.images.standard_resolution.url %>
+
+<% end %>
 
 <% @barber ||= current_barber %>
 <div class="stats">

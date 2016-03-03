@@ -7,7 +7,7 @@ gem 'underscore-rails'
 gem 'bootstrap-generators'
 
 gem 'pg'
-
+gem 'instagram'
 gem 'dotenv-rails'
 gem 'paperclip'
 gem 'aws-sdk', '<2'
