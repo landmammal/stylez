@@ -14,7 +14,7 @@ class BarbersController < ApplicationController
   # GET /shop/:shop_id/barbers/:id
   # GET /barbers/:id.json
   def show
-    @instagram = Instagram.user_recent_media("2917432745", {:count => 2})
+    @instagram = Instagram.user_recent_media("2917432745", {:count => 20})
     # you get that specific shop by params(params[:shop_id])
     shop = Shop.find(params[:shop_id])
     # get all the barbers of this shop
