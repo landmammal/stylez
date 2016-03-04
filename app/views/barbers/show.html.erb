@@ -5,20 +5,12 @@
   <%= @barber.name %>
 </p>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @barber.avatar %>
-</p>
 
 <p>
   <strong>Instagram:</strong>
   <%= @barber.instagram %>
 </p>
 
-<p>
-  <strong>Shop:</strong>
-  <%= @barber.shop %>
-</p>
 
 <!--  @instagram.each do |instagram|  -->
 
@@ -28,13 +20,13 @@
 
 <% @barber ||= current_barber %>
 <div class="stats">
-  <a href="<%= following_barber_path(@barber) %>">
+  <!-- <a href=" following_barber_path(@barber) "> -->
     <strong id="following" class="stat">
       <%= @barber.following.count %>
     </strong>
     following
   </a>
-  <a href="<%= followers_barber_path(@barber) %>">
+  <!-- <a href=" followers_barber_path(@barber) "> -->
     <strong id="followers" class="stat">
       <%= @barber.followers.count %>
     </strong>
@@ -42,7 +34,12 @@
   </a>
 </div>
 
- 
 
-<%= link_to 'Edit', edit_shop_barber_path(@barber.shop, @barber) %> |
-<%= link_to 'Back', shop_barbers_path(@barber.shop) %>
+
+
+
+<% if @barber == current_barber %>
+<%= link_to 'Edit', edit_barber_path(@barber) %> |
+<%= button_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<%= link_to 'back', shop_path(@shop) %>

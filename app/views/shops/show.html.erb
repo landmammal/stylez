@@ -9,8 +9,11 @@
   <strong>Address:</strong>
   <%= @shop.address %>
 </p>
-
-
+<% @shop.barbers.each do |barber| %>
+      <tr>
+        <td><%= link_to barber.name, barber_path(barber) %></td>
+      </tr>
+    <% end %>
+<%= link_to 'New Barber', new_shop_barber_path(@shop.id) %>
 <%= link_to 'Edit', edit_shop_path(@shop) %> |
 <%= link_to 'Back', shops_path %>
-<%= link_to 'barbers name here', [@shop, :barbers] %>

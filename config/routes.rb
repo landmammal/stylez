@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :customers
+  # resources :customers
 
   root 'shops#index'
-
   resources :shops do
-    resources :barbers
+    resources :barbers, shallow: true
   end
 
   resources :customers do
@@ -12,11 +11,11 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :barbers do
-    member do
-      get :following, :followers
-    end
-  end
+  # resources :barbers do
+  #   member do
+  #     get :following, :followers
+  #   end
+  # end
   resources :relationships, only: [:create, :destroy]
 
 
@@ -27,7 +26,7 @@ get '/logout' => 'sessions#destroy_customer'
 #this is used to direct login Sessions
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create_barber'
-get '/logout' => 'sessions#destroy_barber'
+get '/logout_barber' => 'sessions#destroy_barber'
 
 #this is used for login purposes
   get '/signup' => 'customers#new'
@@ -35,6 +34,8 @@ get '/logout' => 'sessions#destroy_barber'
 
     get '/signup' => 'barbers#new'
     post '/barbers' => 'barbers#create'
+
+  # get '/barbers/:id/delete' => 'barbers#destroy', as: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
