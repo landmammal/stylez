@@ -23,6 +23,7 @@ class Barber < ActiveRecord::Base
 
 
     validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+    ratyrate_rateable "Rating"
 
     def feed
 
