@@ -28,18 +28,19 @@
   </div>
 </nav>
 
+<% if current_shop %>
+Signed in as <%= current_shop.name %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup_shop' %>
+<% end %>
+
 <% if current_customer %>
 Signed in as <%= current_customer.name %> | <%= link_to "Logout", '/logout' %>
 <% else %>
-<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup_customer' %>
 <% end %>
 
-<% if current_barber %>
-Signed in as <%= current_barber.name %> | <%= link_to "Logout", '/logout_barber' %>
-<% else %>
-<%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
-<% link_to  %>
+
 <%= yield %>
 
 </body>

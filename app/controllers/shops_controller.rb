@@ -1,6 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   # before_action :authorize_customer, only:[:show]
+  # before_action :authorize_shop, only: [:show]
 
   def index
     @shops = Shop.all
@@ -30,6 +31,7 @@ class ShopsController < ApplicationController
 
     respond_to do |format|
       if @shop.save
+
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
         format.json { render :show, status: :created, location: @shop }
       else

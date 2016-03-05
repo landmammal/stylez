@@ -27,12 +27,13 @@
         <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <%= link_to 'New Shop', new_shop_path %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Shop', new_shop_path %>
+
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
