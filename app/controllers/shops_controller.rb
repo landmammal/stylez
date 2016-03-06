@@ -2,13 +2,14 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
   # before_action :authorize_customer, only:[:show]
   # before_action :authorize_shop, only: [:show]
+  # before_action :when, only: [:index]
 
   def index
     @shops = Shop.all
     @map_hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
       marker.lat shop.latitude
       marker.lng shop.longitude
-      marker.infowindow shop.blob
+      marker.infowindow shop.window + shop.directions
     end
   end
 
@@ -64,6 +65,13 @@ class ShopsController < ApplicationController
   end
 
   private
+
+
+  def when
+    @latitude =params[:lat]
+    @longitude =params[:long]
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_shop
       @shop = Shop.find(params[:id])

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # resources :customers
 
-  root 'shops#index'
+  root 'shops#useless'
   resources :shops do
     resources :barbers, shallow: true
   end
