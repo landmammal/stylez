@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
 
 
-  root 'shops#index'
+  root 'shops#useless'
   resources :shops do
     resources :barbers, shallow: true
   end
