@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+
   post '/rate' => 'rater#create', :as => 'rate'
-  resources :customers
-  # devise_for :users
-  root 'shops#index'
-=======
-  # resources :customers
->>>>>>> cf8b698a290a54f1831582f4d8f7e27820d7ed0f
+
 
   root 'shops#index'
   resources :shops do
@@ -31,16 +26,21 @@ get '/login' => 'sessions#new'
 post '/login' => 'sessions#create_customer'
 get '/logout' => 'sessions#destroy_customer'
 #this is used to direct login Sessions
-get '/login' => 'sessions#new'
 post '/login' => 'sessions#create_barber'
 get '/logout_barber' => 'sessions#destroy_barber'
 
-#this is used for login purposes
-  get '/signup' => 'customers#new'
-    post '/customers' => 'customers#create'
+post '/login' => 'sessions#create_shop'
+get '/logout_shop' => 'sessions#destroy_shop'
 
-    get '/signup' => 'barbers#new'
-    post '/barbers' => 'barbers#create'
+#this is used for login purposes
+  get '/signup_customer' => 'customers#new'
+  post '/customers' => 'customers#create'
+
+  get '/signup_barber' => 'barbers#new'
+  post '/barbers' => 'barbers#create'
+
+  get '/signup_shop' => 'shops#new'
+  post '/shops' => 'shop#create'
 
   # get '/barbers/:id/delete' => 'barbers#destroy', as: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -9,11 +9,17 @@
   <strong>Address:</strong>
   <%= @shop.address %>
 </p>
-<% @shop.barbers.each do |barber| %>
-      <tr>
-        <td><%= link_to barber.name, barber_path(barber) %></td>
-      </tr>
+  <% @shop.barbers.each do |barber| %>
+    <%= link_to barber.name, barber_path(barber) %> <br>
+    <% if @shop == current_shop %>
+      <%= link_to 'New Barber', new_shop_barber_path(@shop.id) %> |
+      <%= link_to 'Edit shop', edit_shop_path(@shop) %> |<br>
     <% end %>
-<%= link_to 'New Barber', new_shop_barber_path(@shop.id) %>
-<%= link_to 'Edit', edit_shop_path(@shop) %> |
-<%= link_to 'Back', shops_path %>
+  <% end %>
+
+  <%= link_to 'Back', shops_path %> <br>
+  <% if current_barber %>
+    Signed in as <%= current_barber.name %> | <%= link_to "Logout", '/logout_barber' %>
+  <% else %>
+    <%= link_to 'Login', '/login' %> | <%= link_to 'Are you a Barber at here?', new_shop_barber_path(@shop.id) %>
+  <% end %>
