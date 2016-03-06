@@ -35,23 +35,9 @@
 </div>
 
 
-<div class="row">
-  <div class="small-2 large-2 columns">
-    <%= imdb_style_rating_for @barber, current_user%>
-  </div>
-  <br>
-  <div class="small-2 large-4 columns">
-    <% if current_user %>
-      Rating: <%= rating_for @barber, "Rating", space: true, stars: 10 %>
-    <% end %>
-  </div>
-</div>
+
 
 <div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div>
-
-<%= link_to 'Edit', edit_shop_barber_path(@barber.shop, @barber) %> |
-<%= link_to 'Back', shop_barbers_path(@barber.shop) %>
-
 
 
 <% if @barber == current_barber %>
