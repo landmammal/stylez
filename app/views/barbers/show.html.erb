@@ -35,9 +35,93 @@
 </div>
 
 
+<div class="row">
+
+	<div class="col-md-4">
+
+		<%= image_tag @barber.avatar.url(:barber_show), class: "barber-show" %>
+
+	</div>
+
+	<div class="col-md-8">
+
+		<div class="book-info">
+
+			<h2 class="book-title"><%= @barber.name %></h2>
+			<h3 class="book-author"><span>From</span> <%= @barber.name %></h3>
+			<h2 class="avg-rating">Average Rating</h2>
+			<div class="average-review-rating" data-score=<%= @average_review %>></div>
+			<span class="number-of-reviews">Based on <%= @barber.reviews.count %> reviews</span>
+			<!-- <p class="book-desc"><%= @barber.description %></p> -->
+
+		</div>
+	</div>
 
 
-<div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div>
+</div>
+
+<div class="row">
+
+	<div class="col-md-4">
+
+		<div class="reviews">
+
+			<!-- Where the reviews/ratings will go -->
+			<h1>Reviews</h1>
+			<%= render @book.reviews %>
+
+			<div>
+				<%= link_to "Add Review", new_book_review_path(@book), class: "btn-custom" %>
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="links btn-group">
+
+	<%= link_to "Back", root_path, class: "btn btn-custom" %>
+
+	<% if user_signed_in? %>
+
+		<% if @book.user_id == current_user.id %>
+
+			<%= link_to "Edit", edit_book_path(@book), class: "btn btn-custom" %>
+			<%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+
+		<% end %>
+
+	<% end %>
+
+</div>
+
+
+<script>
+	$('.review-rating').raty({
+		readOnly: true,
+		score: function() {
+			return $(this).attr('data-score');
+		},
+		path: '/assets/'
+	});
+</script>
+
+
+<script>
+	$('.average-review-rating').raty({
+		readOnly: true,
+		path: '/assets/',
+		score: function() {
+			return $(this).attr('data-score')
+		}
+	});
+</script>
+Status API Training Shop Blog About Pricing
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
+
+<!-- <div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div> -->
 
 
 <% if @barber == current_barber %>
