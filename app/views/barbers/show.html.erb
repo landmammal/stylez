@@ -1,46 +1,39 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @barber.avatar.url %>
+<%= image_tag @barber.avatar.url(:square) %>
 <p>
   <strong>Name:</strong>
   <%= @barber.name %>
 </p>
 
-<p>
-  <strong>Avatar:</strong>
-  <%= @barber.avatar %>
-</p>
 
 <p>
   <strong>Instagram:</strong>
   <%= @barber.instagram %>
 </p>
 
-<p>
-  <strong>Shop:</strong>
-  <%= @barber.shop %>
-</p>
 
-<% @instagram.each do |instagram| %>
+<!--  @instagram.each do |instagram|  -->
 
-<%= image_tag instagram.images.thumbnail.url %>
+<!--  image_tag instagram.images.thumbnail.url  -->
 
-<% end %>
+ <!-- end  -->
 
 <% @barber ||= current_barber %>
 <div class="stats">
-  <a href="<%= following_barber_path(@barber) %>">
+  <!-- <a href=" following_barber_path(@barber) "> -->
     <strong id="following" class="stat">
       <%= @barber.following.count %>
     </strong>
     following
   </a>
-  <a href="<%= followers_barber_path(@barber) %>">
+  <!-- <a href=" followers_barber_path(@barber) "> -->
     <strong id="followers" class="stat">
       <%= @barber.followers.count %>
     </strong>
     followers
   </a>
 </div>
+
 
 <div class="row">
   <div class="small-2 large-2 columns">
@@ -58,3 +51,13 @@
 
 <%= link_to 'Edit', edit_shop_barber_path(@barber.shop, @barber) %> |
 <%= link_to 'Back', shop_barbers_path(@barber.shop) %>
+
+
+
+
+
+<% if @barber == current_barber %>
+<%= link_to 'Edit', edit_barber_path(@barber) %> |
+<%= button_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<%= link_to 'back', shop_path(@shop) %>

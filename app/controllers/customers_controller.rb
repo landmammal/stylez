@@ -1,8 +1,25 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  # before_filter :authorize_customer
 
-  # GET /customers
-  # GET /customers.json
+
+
+
+  def following
+    @title = "Following"
+    @customer  = Customer.find(params[:id])
+    @customers = @customer.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "Followers"
+    @customer  = Customer.find(params[:id])
+    @customers = @customer.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
   def index
     @customers = Customer.all
   end
@@ -27,7 +44,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.save
-        session[:user_id] = @customer.id
+        session[:customer_id] = @customer.id
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
         format.json { render :show, status: :created, location: @customer }
       else

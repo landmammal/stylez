@@ -1,24 +1,39 @@
 class BarbersController < ApplicationController
   before_action :set_barber, only: [:show, :edit, :update, :destroy]
-  before_action :set_shop, only: [:create, :new]
-  # GET /barbers
-  # GET /barbers.json
-  def index
-    # you get that specific shop by params(params[:shop_id])
-    shop = Shop.find(params[:shop_id])
-    # get all the barbers of this shop
-    @barbers = shop.barbers
+  before_action :set_shop, only: [:create, :new, :index, :update]
+  # needs log in to show
+  # before_action :authorize_customer, only: [:show]
+  # before_action :authorize_barber
 
+
+  def following
+    @title = "Following"
+    @barber  = Barber.find(params[:id])
+    @barbers = @barber.following.paginate(page: params[:page])
+    render 'show_follow'
   end
 
-  # GET /shop/:shop_id/barbers/:id
-  # GET /barbers/:id.json
-  def show
-    @instagram = Instagram.user_recent_media("2917432745", {:count => 20})
-    # you get that specific shop by params(params[:shop_id])
-    shop = Shop.find(params[:shop_id])
+  def followers
+    @title = "Followers"
+    @barber  = Barber.find(params[:id])
+    @barbers = @barber.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
+  def index
     # get all the barbers of this shop
-    @barbers = shop.barbers.find(params[:id])
+    @barbers = @shop.barbers
+  end
+
+  def show
+    @shop = @barber.shop
+    # @instagram = Instagram.user_recent_media("2917432745", {:count => 20})
+    # you get that specific shop by params(params[:shop_id])
+
+    # get all the barbers of this shop
+    # @barbers = @shop.barbers
+    # .find(params[:id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,34 +41,23 @@ class BarbersController < ApplicationController
     end
   end
 
-  # GET /barbers/new
+
   def new
-    #1st you retrieve the shop thanks to params[:post_id]
-
-    #2nd you build a new one
     @barber = Barber.new
-
-
   end
 
-  # GET /barbers/1/edit
   def edit
-    #1st you retrieve the post thanks to params[:post_id]
-    shop = Shop.find(params[:shop_id])
     #2nd you retrieve the comment thanks to params[:id]
-    @barber = shop.barbers.find(params[:id])
+    @barber = @shop.barbers.find(params[:id])
   end
 
-  # POST /barbers
-  # POST /barbers.json
   def create
-
-
     #2nd you create the comment with arguments in params[:comment]
     @barber = @shop.barbers.new(barber_params)
 
     respond_to do |format|
       if @barber.save
+        session[:barber_id] = @barber.id
         #1st argument of redirect_to is an array, in order to build the correct route to the nested resource comment
         format.html { redirect_to root_path, :notice => 'profile created.' }
         #the key :location is associated to an array in order to build the correct route to the nested resource comment
@@ -65,13 +69,9 @@ class BarbersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /barbers/1
-  # PATCH/PUT /barbers/1.json
   def update
-    #1st you retrieve the post thanks to params[:post_id]
-    shop = Shop.find(params[:shop_id])
     #2nd you retrieve the comment thanks to params[:id]
-    @barber = shop.barbers.find(params[:id])
+    @barber = @shop.barbers.find(params[:id])
 
     respond_to do |format|
       if @barber.update_attributes(params[:barber])
@@ -85,20 +85,17 @@ class BarbersController < ApplicationController
     end
   end
 
-  # DELETE /barbers/1
-  # DELETE /barbers/1.json
-  def destroy
-    #1st you retrieve the post thanks to params[:post_id]
-   shop = Shop.find(params[:shop_id])
-   #2nd you retrieve the comment thanks to params[:id]
-   @barber = shop.barbers.find(params[:id])
-   @barber.destroy
 
-   respond_to do |format|
-     #1st argument reference the path /posts/:post_id/comments/
-     format.html { redirect_to(shop_barbers_url) }
-     format.xml  { head :ok }
-   end
+  def destroy
+   #2nd you retrieve the comment thanks to params[:id]
+   @shop = @barber.shop
+   @barber.destroy
+    destroy_barber
+  #  respond_to do |format|
+  #    #1st argument reference the path /posts/:post_id/comments/
+  #    format.html { redirect_to root_path}
+  #    format.xml  { head :ok }
+  #  end
   end
 
   private
@@ -106,13 +103,17 @@ class BarbersController < ApplicationController
   def set_shop
     @shop = Shop.find(params[:shop_id])
   end
-    # Use callbacks to share common setup or constraints between actions.
+    # Use callbacks to share common setup between action
     def set_barber
       @barber = Barber.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def barber_params
-      params.require(:barber).permit(:name, :phone, :photo, :avatar, :instagram, :shop_id)
+      params.require(:barber).permit(:name, :phone, :photo, :avatar, :instagram, :shop_id, :email, :password, :password_confirmation)
+    end
+
+    def destroy_barber
+      session[:barber_id] = nil
+      redirect_to '/login'
     end
 end

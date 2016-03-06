@@ -14,9 +14,11 @@
         <td><%= barber.phone %></td>
         <td><%= barber.photo %></td>
         <td><%= barber.shop %></td>
-        <td><%= link_to 'Show', [barber.shop, barber] %></td>
+        <td><%= link_to 'Show', barber %></td>
+        <% if barber == current_barber %>
         <td><%= link_to 'Edit', root_path %></td>
-        <td><%= link_to 'Destroy', [barber.shop, barber], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', barber, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
 

@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   post '/rate' => 'rater#create', :as => 'rate'
   resources :customers
   # devise_for :users
   root 'shops#index'
+=======
+  # resources :customers
+>>>>>>> cf8b698a290a54f1831582f4d8f7e27820d7ed0f
 
+  root 'shops#index'
   resources :shops do
-    resources :barbers
+    resources :barbers, shallow: true
   end
 
   resources :customers do
@@ -13,22 +18,31 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :barbers do
-    member do
-      get :following, :followers
-    end
-  end
+  # resources :barbers do
+  #   member do
+  #     get :following, :followers
+  #   end
+  # end
+  resources :relationships, only: [:create, :destroy]
 
 
 #this is used to direct login Sessions
 get '/login' => 'sessions#new'
-post '/login' => 'sessions#create'
-get '/logout' => 'sessions#destroy'
+post '/login' => 'sessions#create_customer'
+get '/logout' => 'sessions#destroy_customer'
+#this is used to direct login Sessions
+get '/login' => 'sessions#new'
+post '/login' => 'sessions#create_barber'
+get '/logout_barber' => 'sessions#destroy_barber'
 
 #this is used for login purposes
   get '/signup' => 'customers#new'
     post '/customers' => 'customers#create'
 
+    get '/signup' => 'barbers#new'
+    post '/barbers' => 'barbers#create'
+
+  # get '/barbers/:id/delete' => 'barbers#destroy', as: 'delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

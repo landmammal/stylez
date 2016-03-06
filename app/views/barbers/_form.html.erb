@@ -18,6 +18,29 @@
       </p>
     </div>
 
+
+
+      <div class="form_field">
+          <p>
+            <%= instance_post.label :email %><br />
+            <%= instance_post.text_field :email %>
+          </p>
+        </div>
+
+        <div class="form_field">
+            <p>
+              <%= instance_post.label :password %><br />
+              <%= instance_post.password_field :password %>
+            </p>
+          </div>
+
+        <div class="form_field">
+            <p>
+              <%= instance_post.label :password_confirmatio %><br />
+              <%= instance_post.password_field :password_confirmation %>
+            </p>
+          </div>
+
     <div class="form_field">
       <p>
         <%= instance_post.label :phone %><br />

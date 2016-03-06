@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20160305001035) do
     t.string   "name"
     t.string   "instagram"
     t.string   "phone"
+    t.string   "email"
+    t.string   "password_digest"
     t.string   "photo"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false

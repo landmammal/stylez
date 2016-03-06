@@ -1,21 +1,36 @@
 class SessionsController < ApplicationController
 
-  def create
-     user = Customer.find_by_email(params[:email])
-     # If the user exists AND the password entered is correct.
-     if user && user.authenticate(params[:password])
-       # Save the user id inside the browser cookie. This is how we keep the user
-       # logged in when they navigate around our website.
-       session[:user_id] = user.id
+
+  def create_customer
+     customer = Customer.find_by_email(params[:email])
+
+     if customer && customer.authenticate(params[:password])
+       session[:customer_id] = customer.id
        redirect_to '/'
      else
-     # If user's login doesn't work, send them back to the login form.
        redirect_to '/login'
      end
    end
 
-   def destroy
-     session[:user_id] = nil
+   def destroy_customer
+     session[:customer_id] = nil
      redirect_to '/login'
    end
+
+
+
+   def create_barber
+      barber = Barber.find_by_email(params[:email])
+      if barber && barber.authenticate(params[:password])
+        session[:barber_id] = barber.id
+        redirect_to '/'
+      else
+        redirect_to '/login'
+      end
+    end
+
+    def destroy_barber
+      session[:barber_id] = nil
+      redirect_to '/login'
+    end
  end

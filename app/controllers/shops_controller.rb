@@ -1,8 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  # before_action :authorize_customer, only:[:show]
 
-  # GET /shops
-  # GET /shops.json
   def index
     @shops = Shop.all
     @map_hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
