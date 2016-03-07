@@ -1,0 +1,22 @@
+<div class="review">
+
+	<div class="review-rating" data-score="<%= review.rating %>"></div>
+	<p class="review-comment"><%= review.comment %></p>
+
+
+	<% if current_customer ? %>
+
+		<% if review.customer_id == current_customer.id %>
+
+			<div class="links btn-group">
+
+				<%= link_to "Edit", edit_barber_review_path(review.barber, review), class: "btn btn-custom" %>
+				<%= link_to "Delete", barber_review_path(review.barber, review), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
+
+			</div>
+
+		<% end %>
+
+	<% end %>
+
+</div>

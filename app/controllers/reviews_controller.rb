@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-raise
+
     @review = Review.new(review_params)
     @review.barber_id = @barber.id
     @review.customer_id = current_customer.id
