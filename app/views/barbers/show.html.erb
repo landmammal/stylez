@@ -1,33 +1,40 @@
+<div class="container profile-container">
 
-<div class="col-md-4">
+<div class="col-md-4 left-container">
   <%= link_to 'back', shop_path(@shop) %>
   <div class="profile-pic"><%= image_tag @barber.avatar.url(:square) %></div>
   <div class="profile-info">
     <%= @barber.name %> <br>
     <%= @barber.instagram %>
   </div>
+  <div class="col-md-4">
+    <% @instagram.each do |instagram| %>
+
+    <%= image_tag instagram.images.thumbnail.url  %>
+
+     <% end %>
+  <% @barber ||= current_barber %>
+  <div class="stats">
+    <!-- <a href=" following_barber_path(@barber) "> -->
+      <strong id="following" class="stat">
+        <%= @barber.following.count %>
+      </strong>
+      following
+    </a>
+    <!-- <a href=" followers_barber_path(@barber) "> -->
+      <strong id="followers" class="stat">
+        <%= @barber.followers.count %>
+      </strong>
+      followers
+    </a>
+  </div>
+  </div>
 </div>
 
 
-<div class="col-md-3">
-<% @barber ||= current_barber %>
-<div class="stats">
-  <!-- <a href=" following_barber_path(@barber) "> -->
-    <strong id="following" class="stat">
-      <%= @barber.following.count %>
-    </strong>
-    following
-  </a>
-  <!-- <a href=" followers_barber_path(@barber) "> -->
-    <strong id="followers" class="stat">
-      <%= @barber.followers.count %>
-    </strong>
-    followers
-  </a>
-</div>
-</div>
 
-<div class="col-md-5">
+
+<div class="col-md-8">
   <div id="bookingjs">
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="http://cdn.timekit.io/booking-js/v1/booking.min.js" defer></script>
@@ -54,11 +61,7 @@
 
 
 
-<!--  @instagram.each do |instagram|  -->
 
-<!--  image_tag instagram.images.thumbnail.url  -->
-
- <!-- end  -->
 
 
 
@@ -70,3 +73,4 @@
 <%= link_to 'Edit', edit_barber_path(@barber) %> |
 <%= button_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
+</div>

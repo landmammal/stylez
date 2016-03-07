@@ -24,9 +24,11 @@ class BarbersController < ApplicationController
   def index
     # get all the barbers of this shop
     @barbers = @shop.barbers
+
   end
 
   def show
+    @instagram = Instagram.user_recent_media("2917432745", {:count => 5})
     @shop = @barber.shop
     # @instagram = Instagram.user_recent_media("2917432745", {:count => 20})
     # you get that specific shop by params(params[:shop_id])
