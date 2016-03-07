@@ -19,20 +19,23 @@ Rails.application.routes.draw do
   #   end
   # end
   resources :relationships, only: [:create, :destroy]
-  resources :reviews
+  resources :barbers do
+    resources :reviews
+  end
 
-#this is used to direct login Sessions
-get '/login' => 'sessions#new'
-post '/login' => 'sessions#create_customer'
-get '/logout' => 'sessions#destroy_customer'
-#this is used to direct login Sessions
-post '/login' => 'sessions#create_barber'
-get '/logout_barber' => 'sessions#destroy_barber'
 
-post '/login' => 'sessions#create_shop'
-get '/logout_shop' => 'sessions#destroy_shop'
+  #this is used to direct login Sessions
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create_customer'
+  get '/logout' => 'sessions#destroy_customer'
+  #this is used to direct login Sessions
+  post '/login' => 'sessions#create_barber'
+  get '/logout_barber' => 'sessions#destroy_barber'
 
-#this is used for login purposes
+  post '/login' => 'sessions#create_shop'
+  get '/logout_shop' => 'sessions#destroy_shop'
+
+  #this is used for login purposes
   get '/signup_customer' => 'customers#new'
   post '/customers' => 'customers#create'
 

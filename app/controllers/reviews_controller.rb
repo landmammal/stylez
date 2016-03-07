@@ -1,20 +1,23 @@
 class ReviewsController < ApplicationController
   before_action :find_barber
   before_action :find_review, only: [:edit, :update, :destroy]
-  before_action :authenticate_customer!, only: [:new, :edit]
+  before_action :authorize_customer, only: [:new, :edit]
 
   def new
     @review = Review.new
   end
 
   def create
+raise
     @review = Review.new(review_params)
     @review.barber_id = @barber.id
     @review.customer_id = current_customer.id
 
     if @review.save
+
       redirect_to barber_path(@barber)
     else
+
       render 'new'
     end
   end
