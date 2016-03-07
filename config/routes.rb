@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # resources :customers
+
+  post '/rate' => 'rater#create', :as => 'rate'
+
 
   root 'shops#useless'
   resources :shops do
