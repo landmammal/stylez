@@ -13,7 +13,7 @@ class Barber < ActiveRecord::Base
   # validates :name, :presence => true
   # validates :avatar, :presence => true
   # validates :instagram, :presence => tr
-
+  has_many :reviews
 
 
   has_attached_file :avatar, styles: {

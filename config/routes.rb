@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   #   end
   # end
   resources :relationships, only: [:create, :destroy]
-
+  resources :reviews
 
 #this is used to direct login Sessions
 get '/login' => 'sessions#new'
