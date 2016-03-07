@@ -13,10 +13,15 @@
  *= require_tree .
  *= require_self
  */
-
+.profile-info {
+  margin: 25px;
+}
+.profile-pic {
+  margin: 25px;
+}
  h1 {
-   color: #d54d7b;
-   font-family: "Great Vibes", cursive;
+   color: #202020;
+   font-family: 'Montserrat', sans-serif;
    font-size: 100px;
    line-height: 160px;
    font-weight: normal;
