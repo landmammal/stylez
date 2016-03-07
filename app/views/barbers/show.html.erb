@@ -52,7 +52,6 @@
 			<h2 class="avg-rating">Average Rating</h2>
 			<div class="average-review-rating" data-score=<%= @average_review %>></div>
 			<span class="number-of-reviews">Based on <%= @barber.reviews.count %> reviews</span>
-			<!-- <p class="book-desc"><%= @barber.description %></p> -->
 
 		</div>
 	</div>
@@ -68,10 +67,10 @@
 
 			<!-- Where the reviews/ratings will go -->
 			<h1>Reviews</h1>
-			<%= render @book.reviews %>
+			<%= render @barber.reviews %>
 
 			<div>
-				<%= link_to "Add Review", new_book_review_path(@book), class: "btn-custom" %>
+				<%= link_to "Add Review", new_review_path(@barber), class: "btn-custom" %>
 			</div>
 
 		</div>
@@ -84,16 +83,7 @@
 
 	<%= link_to "Back", root_path, class: "btn btn-custom" %>
 
-	<% if user_signed_in? %>
 
-		<% if @book.user_id == current_user.id %>
-
-			<%= link_to "Edit", edit_book_path(@book), class: "btn btn-custom" %>
-			<%= link_to "Delete", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-custom" %>
-
-		<% end %>
-
-	<% end %>
 
 </div>
 
@@ -118,8 +108,6 @@
 		}
 	});
 </script>
-Status API Training Shop Blog About Pricing
-© 2016 GitHub, Inc. Terms Privacy Security Contact Help
 
 <!-- <div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div> -->
 
