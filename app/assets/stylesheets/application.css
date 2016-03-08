@@ -15,15 +15,55 @@
  */
 
 
+body {
+  /*height: 100%;
+  padding-top: 18em;
+  background: url(http://www.wellgroomedgroom.com/wp-content/uploads/2014/06/virile-barber-shop.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  height: 100%;
+  /*padding-top: 18em;*/
+  background: url(http://wallpaperswide.com/download/light_background-wallpaper-1280x720.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 
 
- .useless {
- background: url(http://princessprofessional.com/wp-content/uploads/2016/01/rauzel-about.jpg) no-repeat center center fixed;
+
+
+}
+#useless{
+  height: 100%;
+  padding-top: 18em;
+  background: url(http://i.imgur.com/wIfeNK3.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.profile-container {
+    /*background-color: #FAEBD7;*/
+
+    background: rgba(24, 24, 24, 0.3);
+}
+
+.barbers {
+    margin-top: 17em;
+background: rgba(13, 12, 12, 0.3);
+
+}
+ /*#header{
+ background: url(http://i.imgur.com/wIfeNK3.jpg) no-repeat center center fixed;
  -webkit-background-size: cover;
  -moz-background-size: cover;
  -o-background-size: cover;
  background-size: cover;
-}
+ height: 100%;
+}*/
+
 
 
   .left-container{
@@ -33,6 +73,7 @@
 
 .profile-container {
   padding-top: 55px;
+  padding-top: 11em;
 
 }
 
@@ -43,6 +84,7 @@
   margin: 25px;
 }
  h1 {
+
    color: #202020;
    font-family: 'Montserrat', sans-serif;
    font-size: 100px;
