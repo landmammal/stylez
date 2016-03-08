@@ -4,17 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # before_action :authorize_shop, only: [:show]
 
-  
-
-    def current_customer
-      @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
-    end
-    helper_method :current_customer
-
-    def authorize_customer
-      redirect_to '/login' unless current_customer
-    end
-
+    # Barber log inn
     def current_barber
       @current_barber ||= Barber.find(session[:barber_id]) if session[:barber_id]
     end
@@ -24,6 +14,7 @@ class ApplicationController < ActionController::Base
       redirect_to '/login' unless current_barber
     end
 
+    # Admin log inn
     def current_shop
       @current_shop ||= Shop.find(session[:shop_id]) if session[:shop_id]
     end
@@ -32,5 +23,15 @@ class ApplicationController < ActionController::Base
     def authorize_shop
       redirect_to '/login' unless current_shop
     end
-
 end
+
+  # original customer log in before we when with google log in
+
+  # def current_customer
+  #   @current_customer ||= Customer.find(session[:customer_id]) if session[:customer_id]
+  # end
+  # helper_method :current_customer
+  #
+  # def authorize_customer
+  #   redirect_to '/login' unless current_customer
+  # end
