@@ -33,12 +33,18 @@ class BarbersController < ApplicationController
 
     # get all the barbers of this shop
     # @barbers = @shop.barbers
-    # .find(params[:id])
+    # .find(params[:id])if @book.reviews.blank?
+    if @barber.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @barber.reviews.average(:rating).round(2)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @barbers }
     end
+
   end
 
 
@@ -87,15 +93,15 @@ class BarbersController < ApplicationController
 
 
   def destroy
-   #2nd you retrieve the comment thanks to params[:id]
-   @shop = @barber.shop
-   @barber.destroy
+    #2nd you retrieve the comment thanks to params[:id]
+    @shop = @barber.shop
+    @barber.destroy
     destroy_barber
-  #  respond_to do |format|
-  #    #1st argument reference the path /posts/:post_id/comments/
-  #    format.html { redirect_to root_path}
-  #    format.xml  { head :ok }
-  #  end
+    #  respond_to do |format|
+    #    #1st argument reference the path /posts/:post_id/comments/
+    #    format.html { redirect_to root_path}
+    #    format.xml  { head :ok }
+    #  end
   end
 
   private
@@ -103,17 +109,17 @@ class BarbersController < ApplicationController
   def set_shop
     @shop = Shop.find(params[:shop_id])
   end
-    # Use callbacks to share common setup between action
-    def set_barber
-      @barber = Barber.find(params[:id])
-    end
+  # Use callbacks to share common setup between action
+  def set_barber
+    @barber = Barber.find(params[:id])
+  end
 
-    def barber_params
-      params.require(:barber).permit(:name, :phone, :photo, :avatar, :instagram, :shop_id, :email, :password, :password_confirmation)
-    end
+  def barber_params
+    params.require(:barber).permit(:name, :phone, :photo, :avatar, :instagram, :shop_id, :email, :password, :password_confirmation)
+  end
 
-    def destroy_barber
-      session[:barber_id] = nil
-      redirect_to '/login'
-    end
+  def destroy_barber
+    session[:barber_id] = nil
+    redirect_to '/login'
+  end
 end

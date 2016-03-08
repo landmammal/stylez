@@ -81,8 +81,6 @@
 
 <div class="links btn-group">
 
-	<%= link_to "Back", root_path, class: "btn btn-custom" %>
-
 
 
 </div>
@@ -116,4 +114,4 @@
 <%= link_to 'Edit', edit_barber_path(@barber) %> |
 <%= button_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-<%= link_to 'back', shop_path(@shop) %>
+<%= link_to 'Back', shop_path(@shop) %>
