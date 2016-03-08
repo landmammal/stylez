@@ -111,7 +111,7 @@
 
 
 <% if @barber == current_barber %>
-<%= link_to 'Edit', edit_barber_path(@barber) %> |
-<%= button_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_barber_path(@barber) %>
+<%= link_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <%= link_to 'Back', shop_path(@shop) %>
