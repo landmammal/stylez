@@ -9,13 +9,11 @@ class Shop < ActiveRecord::Base
   def window
     <<-TEXT
       <h3><a href="shops/#{self.id}">#{name}</a></h3>
-
-
-            <h1 id="firstHeading" class="firstHeading">Uluru</h1>
-
+      <h1 id="firstHeading" class="firstHeading">Uluru</h1>
     TEXT
   end
 
+  # passes directions to google info window
   def directions
      "<a target='blank' href='https://www.google.com/maps/place/"+"#{self.address}"+"'>Get Directions</a>"
   end
