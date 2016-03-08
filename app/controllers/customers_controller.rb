@@ -3,41 +3,34 @@ class CustomersController < ApplicationController
   # before_filter :authorize_customer
 
 
-
-
-  def following
-    @title = "Following"
-    @customer  = Customer.find(params[:id])
-    @customers = @customer.following.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @customer  = Customer.find(params[:id])
-    @customers = @customer.followers.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
+  # custpomers to fallow barbers needs a bit more work remove customers from been fallow
+  # def following
+  #   @title = "Following"
+  #   @customer  = Customer.find(params[:id])
+  #   @customers = @customer.following.paginate(page: params[:page])
+  #   render 'show_follow'
+  # end
+  #
+  # def followers
+  #   @title = "Followers"
+  #   @customer  = Customer.find(params[:id])
+  #   @customers = @customer.followers.paginate(page: params[:page])
+  #   render 'show_follow'
+  # end
 
   def index
     @customers = Customer.all
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
   def show
   end
 
-  # GET /customers/new
   def new
     @customer = Customer.new
   end
 
-  # GET /customers/1/edit
   def edit
   end
-
 
   def create
     @customer = Customer.new(customer_params)
@@ -54,7 +47,6 @@ class CustomersController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @customer.update(customer_params)
@@ -67,8 +59,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     @customer.destroy
     respond_to do |format|
@@ -79,12 +69,11 @@ class CustomersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_customer
-      @customer = Customer.find(params[:id])
-    end
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def customer_params
-      params.require(:customer).permit(:name, :email, :password, :password_confirmation)
-    end
+  def customer_params
+    params.require(:customer).permit(:name, :email, :password, :password_confirmation)
+  end
 end

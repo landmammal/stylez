@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
      else
        redirect_to '/login'
      end
-   end
+  end
 
    def destroy_shop
      session[:shop_id] = nil
@@ -17,17 +17,17 @@ class SessionsController < ApplicationController
    end
 
   def create_customer
-     customer = Customer.find_by_email(params[:email])
+   customer = Customer.find_by_email(params[:email])
 
-     if customer && customer.authenticate(params[:password])
-       session[:customer_id] = customer.id
-       redirect_to '/'
-     else
-       redirect_to '/login'
-     end
+    if customer && customer.authenticate(params[:password])
+      session[:customer_id] = customer.id
+      redirect_to '/'
+    else
+     redirect_to '/login'
+    end
    end
 
-   def destroy_admin
+    def destroy_admin
      session[:customer_id] = nil
      redirect_to '/login'
    end
@@ -48,4 +48,4 @@ class SessionsController < ApplicationController
       session[:barber_id] = nil
       redirect_to '/login'
     end
- end
+end

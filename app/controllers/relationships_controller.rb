@@ -1,6 +1,5 @@
 class RelationshipsController < ApplicationController
-
-  before_action :logged_in_user
+  before_action :authorize_customer
 
   def create
     barber = @barber.find(params[:followed_id])
@@ -13,5 +12,4 @@ class RelationshipsController < ApplicationController
     current_barber.unfollow(barber)
     redirect_to barber
   end
-
 end

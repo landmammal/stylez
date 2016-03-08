@@ -13,10 +13,8 @@ class ShopsController < ApplicationController
     end
   end
 
-
   def show
   end
-
 
   def new
     @shop = Shop.new
@@ -25,8 +23,6 @@ class ShopsController < ApplicationController
   def edit
   end
 
-  # POST /shops
-  # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
 
@@ -65,7 +61,6 @@ class ShopsController < ApplicationController
   end
 
   private
-
 
   def when
     @latitude =params[:lat]
