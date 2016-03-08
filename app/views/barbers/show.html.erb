@@ -1,43 +1,68 @@
-<p id="notice"><%= notice %></p>
-<%= image_tag @barber.avatar.url(:square) %>
-<p>
-  <strong>Name:</strong>
-  <%= @barber.name %>
-</p>
+<div class="container profile-container">
+
+<div class="col-md-4 left-container">
+  <%= link_to 'back', shop_path(@shop) %>
+  <div class="profile-pic"><%= image_tag @barber.avatar.url(:square) %></div>
+  <div class="profile-info">
+    <%= @barber.name %> <br>
+    <%= @barber.instagram %>
+  </div>
+  <div class="col-md-4">
+    <% @instagram.each do |instagram| %>
+
+    <%= image_tag instagram.images.thumbnail.url  %>
+
+     <% end %>
+  <% @barber ||= current_barber %>
+  <div class="stats">
+    <!-- <a href=" following_barber_path(@barber) "> -->
+      <!-- <strong id="following" class="stat">
+        <%= @barber.following.count %>
+      </strong>
+      following
+    </a> -->
+    <!-- <a href=" followers_barber_path(@barber) "> -->
+      <strong id="followers" class="stat">
+        <%= @barber.followers.count %>
+      </strong>
+      followers
+    </a>
+  </div>
+  </div>
+</div>
 
 
-<p>
-  <strong>Instagram:</strong>
-  <%= @barber.instagram %>
-</p>
 
 
-<!--  @instagram.each do |instagram|  -->
-
-<!--  image_tag instagram.images.thumbnail.url  -->
-
- <!-- end  -->
-
-<% @barber ||= current_barber %>
-<div class="stats">
-  <!-- <a href=" following_barber_path(@barber) "> -->
-    <strong id="following" class="stat">
-      <%= @barber.following.count %>
-    </strong>
-    following
-  </a>
-  <!-- <a href=" followers_barber_path(@barber) "> -->
-    <strong id="followers" class="stat">
-      <%= @barber.followers.count %>
-    </strong>
-    followers
-  </a>
+<div class="col-md-8">
+  <div id="bookingjs">
+  <script type="text/javascript" src="http://cdn.timekit.io/booking-js/v1/booking.min.js" defer></script>
+  <script type="text/javascript">
+    window.timekitBookingConfig = {
+      name: 'example',
+      email: 'roger.rodriguez666@gmail.com',
+      apiToken: 'wunUN3jcZkG5TOaL0bHZ2YHFpFvfpvEm',
+      calendar: '0b1cddd7-30c3-4865-b9f1-b50f190b3f0b',
+      avatar: 'https://lh5.googleusercontent.com/-EEQYr2CfUb0/AAAAAAAAAAI/AAAAAAAAA4I/-O1ovFR9J5M/photo.jpg',
+      timekitFindTime: {
+        filters: {
+          and: [
+            {
+              business_hours: { }
+            }
+          ]
+        }
+      }
+    }
+  </script>
+</div>
 </div>
 
 
 <div class="row">
 
 	<div class="col-md-4">
+
 
 		<%= image_tag @barber.avatar.url(:barber_show), class: "barber-show" %>
 
@@ -107,11 +132,15 @@
 	});
 </script>
 
-<!-- <div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div> -->
+<div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div>
+
 
 
 <% if @barber == current_barber %>
 <%= link_to 'Edit', edit_barber_path(@barber) %>
 <%= link_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
+
 <%= link_to 'Back', shop_path(@shop) %>
+
+</div>

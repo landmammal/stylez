@@ -1,25 +1,17 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @shop.name %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @shop.address %>
-</p>
+
+<div  class= "col-md-6 col-md-offset-3 text-center barbers">
+  <h1><%= @shop.name %></h1>
+
   <% @shop.barbers.each do |barber| %>
-    <%= link_to barber.name, barber_path(barber) %> <br>
+  <div class="col-md-4 text-center" >
+   <div><img class="icon icons8-Barber-Chair" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAADOklEQVRoQ9Wa4W0UMRCFXyogVABUAFQAVACpgFABUAFQAaQCoAJIBUAFkAoIFQAVgL6VffL51uuxvXuyLZ3y4+xovp3nmWfvnWjMcVvSK0n3XPg/JL2RdH0yIM+5pPczcf+RdDYaUArG812OBIS8vucUNRLQF0kPM0BXowABAlBuXIwCZMkOsEMUBUr0z1xqJP2VdDpChl67npNj+ijpfAQgKptvoEtQZ5I+9w50Kul3LjVebszrHeiJpE8GoEluIwBZ988ktxGAvkp6kMnQVN38nN4lx/7ZBZsAu5SENKfRM5C1IDyT9OHYQJTdx86L0Sj5+HHNOUYS9p9zDZ8rN8did266tUfJEB6Mg1jOVBoK2eyUPbltLbm3kl7URmpctye3LYE4UU59YeOxJ7etgFK9g+ZHGebDnvHD7yn/F3my525kHsaB3LYAmnPGv1xZZbOXjFwPOpDbFkCUz6dB1DQ9IKlgpSMHdCC3tYHoG5xbwka4sySlNE6aKZfwLVU512yssZFEamG/KWVin91KLHop6d3cd2sCxcXgorFsL0nuTlRYdmwtQEgLSVCRfGUK5ea7fugCyFpY4ZaylgLCRSQPfLVAdH+aZs44pgIm2NDmzFVAjgPYpXgk5VZbFNDu89INkZlPFfQ9iv5CFlP9LCm3WiCLpW/lBQjA2G0syq0W6F9rtA3rF+VWC7RUThtizS5FimRssUnXFIXUZs1G1DjBFKtpUhSI9Z65Mf695dm942fXALE29mxrBj/3v7J7pxWI9ZRVelHO5rfAYm55eOaDYm2GwiD9nrIa0bhKrhHDKtaHfxLezCw2vOAJdA2EFLg7KHHW3QKF558SZ90tUOi17juzaSkAXQJxcOO9DVlKnh4TdF0ChS+hHjkjackOc7oDCu/cSrNzFCCsDEGWnv9pepwcrSdQn8HNM8RNTSkMwc3eixl0tzkQdrzUvtTCHE1y+KXUlVH40JEZzXT3PsaQkXjK5hmqiMm0hJJ+d+adUPxqxb8X8n/ZkxSb0r05BbWqMXTB+xdblt8WLD0ZADG+3C1w0W8aawFxn41zqCkulkCB47aJXy0ujjWArD8sysVi+Z5s0ciT4z+CY6bUrohFDQAAAABJRU5ErkJggg==" width="32" height="32"></div>
+   <h5><%= link_to barber.name, barber_path(barber) %></h5>
     <% if @shop == current_shop %>
       <%= link_to 'New Barber', new_shop_barber_path(@shop.id) %> |
       <%= link_to 'Edit shop', edit_shop_path(@shop) %> |<br>
     <% end %>
+    </div>
   <% end %>
-
-  <%= link_to 'Back', shops_path %> <br>
-  <% if current_barber %>
-    Signed in as <%= current_barber.name %> | <%= link_to "Logout", '/logout_barber' %>
-  <% else %>
-    <%= link_to 'Login', '/login' %> | <%= link_to 'Are you a Barber at here?', new_shop_barber_path(@shop.id) %>
-  <% end %>
+</div>
