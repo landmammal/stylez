@@ -30,7 +30,7 @@ class BarbersController < ApplicationController
 
   def show
                                       # need original instagram log inn to make this work properly
-    @instagram = Instagram.user_recent_media("2917432745", {:count => 5})
+    # @instagram = Instagram.user_recent_media("2917432745", {:count => 6})
     @shop = @barber.shop
 
     respond_to do |format|

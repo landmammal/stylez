@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-  
+
 
   body {
     height: 100%;
@@ -35,8 +35,31 @@
     text-align: center;
     text-shadow: 0 1px 1px #fff;
   }
+  a .directions {
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  #directions {
+    color: black;
+  }
+
+  a {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
 
    /*search page styles*/
+  .info-name {
+    color: black;
+  }
 
   #useless{
     height: 100%;
@@ -49,7 +72,7 @@
   }
 
   #initial-button {
-    margin-top: 40px;
+    margin-top: 30px;
     text-align: center;
   }
 
@@ -62,21 +85,35 @@
   }
 
   .left-container{
-      background: rgba(13, 12, 12, 0.3);
+      background: rgba(13, 12, 12, 0.8);
+      text-align: center;
+      padding-bottom: 40px;
 
    }
 
    .profile-info {
      margin: 25px;
+     color: white;
    }
 
-   .profile-pic {
+   .profile-pic img {
      margin: 25px;
+     border-radius: 50%;
+     border: solid black 5px;
+   }
+
+   .stats {
+     color: white;
    }
 
   /*shops show*/
 
   .barbers {
-    margin-top: 17em;
+    margin-top: 10em;
     background: rgba(13, 12, 12, 0.3);
   }
+
+.shop-name {
+  line-height: 1;
+  padding-bottom: 55px;
+}
