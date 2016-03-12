@@ -32,11 +32,11 @@ class BarbersController < ApplicationController
                                       # need original instagram log inn to make this work properly
     # @instagram = Instagram.user_recent_media("2917432745", {:count => 6})
     @shop = @barber.shop
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @barbers }
     end
+
   end
 
   def new
@@ -98,7 +98,7 @@ class BarbersController < ApplicationController
   def set_shop
     @shop = Shop.find(params[:shop_id])
   end
-    # Use callbacks to share common setup between actions
+
   def set_barber
     @barber = Barber.find(params[:id])
   end

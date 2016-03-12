@@ -9,8 +9,13 @@ class Customer < ActiveRecord::Base
 
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+<<<<<<< HEAD
+  has_many :reviews
+  ratyrate_rater
+=======
 
   # ratyrate_rater
+>>>>>>> 44424b32fc421478799b6bee436c49deee6c2a21
 
   def feed
 

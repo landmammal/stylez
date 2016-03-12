@@ -34,6 +34,17 @@
 
   </div>
 
+  <!-- the instagram been pull from user profile -->
+
+  <!-- <div class="col-md-12">
+    <% @instagram.each do |instagram| %>
+      <div class="col-md-6">
+        <%= image_tag instagram.images.thumbnail.url  %>
+      </div>
+     <% end %>
+  <% @barber ||= current_barber %>
+
+  </div> -->
 
 
 
@@ -41,7 +52,7 @@
 
 
 
-      <!--  booking calander -->
+      <!--  booking calander right side -->
 
 
 <div class="col-md-8">
@@ -76,12 +87,13 @@
 
 
 
-
-
+<!-- ------------------------------------------------------------------ -->
+<!-- facebook comments  -->
 
 <div class="fb-comments" data-href="http://localhost:3000/shops/1/barbers/2" data-numposts="5"></div>
 
-
+<!-- --------------------------------------------------------------------->
+<!-- barber powers -->
 <% if @barber == current_barber %>
 <%= link_to 'Edit', edit_barber_path(@barber) %> |
 <%= button_to 'Destroy', @barber, method: :delete, data: { confirm: 'Are you sure?' } %>
