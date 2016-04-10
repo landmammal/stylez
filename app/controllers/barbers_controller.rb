@@ -48,7 +48,7 @@ class BarbersController < ApplicationController
   end
 
   def create
-    #create the barber with arguments in params[:comment] after before action has found the shop he is inn
+    #create the barber with arguments in params[:shop] after before action has found the shop he is inn
     @barber = @shop.barbers.new(barber_params)
 
     respond_to do |format|

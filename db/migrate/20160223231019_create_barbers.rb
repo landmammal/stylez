@@ -5,7 +5,6 @@ class CreateBarbers < ActiveRecord::Migration
       t.string :instagram
       t.integer :phone
       t.string :photo
-      t.string :email
       t.string :password_digest
 
       t.timestamps null: false

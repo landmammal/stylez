@@ -103,7 +103,7 @@
    }
 
    .stats {
-     color: white;
+   color: white;
    }
 
   /*shops show*/
@@ -113,7 +113,7 @@
     background: rgba(13, 12, 12, 0.3);
   }
 
-.shop-name {
-  line-height: 1;
-  padding-bottom: 55px;
-}
+  .shop-name {
+    line-height: 1;
+    padding-bottom: 55px;
+  }
