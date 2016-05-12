@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'underscore-rails'
+# gem 'rake', '11.1.2'
 
 gem 'bootstrap-generators'
 
