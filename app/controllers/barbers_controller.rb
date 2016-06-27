@@ -87,7 +87,7 @@ class BarbersController < ApplicationController
    @barber.destroy
    destroy_barber
    respond_to do |format|
-     #1st argument reference the path /chops/:shop_id/barbers/
+     #1st argument reference the path /shops/:shop_id/barbers/
      format.html { redirect_to root_path}
      format.xml  { head :ok }
    end
